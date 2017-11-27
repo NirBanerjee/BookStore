@@ -106,13 +106,14 @@ STATIC_URL = '/static/'
 #Registration
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = "/store/"
 
 #EMAIL BACKENDS
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smptp.gmail.com"
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "brewster345@gmail.com"
 EMAIL_HOST_PASSWORD = "brewsterslaw"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "nirmohob@andrew.cmu.edu"
+DEFAULT_FROM_EMAIL = "nbooks@mysterybooks.com"
 
