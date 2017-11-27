@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+	<head lang="en">
+		<meta charset="utf-8">
+		<title>Welcome</title>
+	</head>
+	<body>
+		<h1>Your account has been activated.</h2>
+		<form method="post" action=".">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="register">
+		</form>
+	</body>
+</html>
