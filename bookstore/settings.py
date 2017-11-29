@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'store',
     'registration',
+    'social.apps.django_app.default'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -65,12 +66,19 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'bookstore.wsgi.application'
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 
 # Database
@@ -116,4 +124,8 @@ EMAIL_HOST_PASSWORD = "brewsterslaw"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "nbooks@mysterybooks.com"
+
+#SOCIAL Auth Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '2037612956469463'
+SOCIAL_AUTH_FACEBOOK_SECRET = '253e16b4e986b0cfc5321faaad895357'
 
