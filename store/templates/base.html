@@ -2,14 +2,15 @@
 {% load staticfiles %}
 (% load bootstrap3 %}
 (% bootstrap_styles theme='simplex' type='min.css' %}
+{% load compress %}  
 (% load bootstrap_themes %}
-{% load compress %}
 
 {% block bootstrap3_extra_head %}
      <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
-
+	 {% compress css %}
 	 <link href="{% static 'base/css/style.css' %}" rel="stylesheet" type="text/css">
-{% endblock %}
+	 {% endcompress%}
+{% endblock %} 
 
 {% block bootstrap3_title %}
      {% block title %}
@@ -54,8 +55,18 @@
 	    <div class="row">
 	     {% block body %}
 		 <div class="col-md-8 col-md-offset-2 col-sm-12 maincontent">
-		   Welcome to our store!
+		   <div style="text-align:center"><h3>Welcome to our store!</h3></div>  
+		     {% for book in books %}
+			 <a href="{% url 'book_details' book.id %}">
+			 <div class="storefront_book_display">
+			    <img src="{% static 'base/img/empty_cover.jpg' %}">
+				<span class="storefront_book_title">{{ book.title }}</span>
+				<span class="storefront_book_author">{{ book.author }}</span>
+			 </div>
+			 {% endfor %}
+		   </div>
 		 </div>
+		 </a>
 		 {% endblock %}
 		</div>
 	  </div>
