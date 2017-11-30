@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-
 # Create your models here.
 
 class Author(models.Model):
@@ -66,4 +65,8 @@ class BookOrder(models.Model):
     quantity= models.IntegerField(null=True)
     payment_type=models.CharField(max_length=100, null=True)   
     payment_id=models.CharField(max_length=100, null=True)
+
+
+
+
 
