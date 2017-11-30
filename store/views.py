@@ -33,6 +33,10 @@ def book_details(request,book_id):
     context= {
         'book': book,
     }
+    geo_info=GeoIP().city(request.META.get('REMOTE_ADDR'))
+    if not geo_info:
+        geo_info= GeoIP().city("103.39.251.45")
+    context['geo_info']= geo_info
     if request.user.is_authenticated():
         if request.method== "POST":
             form= ReviewForm(request.POST)
@@ -41,6 +45,8 @@ def book_details(request,book_id):
                     user= request.user,
                     book= context['book'],
                     text=form.cleaned_data.get('text'),
+                    latitude= geo_info['latitude'],                
+                    longitude= geo_info['longitude'],
                 )
                 new_review.save()
                 if Review.objects.filter(user=request.user).count()<6:
@@ -64,10 +70,7 @@ def book_details(request,book_id):
                 form= ReviewForm()
                 context['form']= form
     context['reviews']= book.review_set.all()
-    geo_info=GeoIP().city(request.META.get('REMOTE_ADDR'))
-    if not geo_info:
-        geo_info= GeoIP().city("103.39.251.45")
-    context['geo_info']= geo_info
+    
     return render(request,'store/detail.html',context)
 
 def add_to_cart(request,book_id):
