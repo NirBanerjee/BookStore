@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'registration',
+    'django.contrib.gis',
     'social.apps.django_app.default',
     'bootstrap3',
     'bootstrap_themes',
@@ -143,3 +144,4 @@ DEFAULT_FROM_EMAIL = "nbooks@mysterybooks.com"
 SOCIAL_AUTH_FACEBOOK_KEY = '2037612956469463'
 SOCIAL_AUTH_FACEBOOK_SECRET = '253e16b4e986b0cfc5321faaad895357'
 
+GEOIP_PATH= 'geo/'
